@@ -23,4 +23,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
       - name: List Files
-        run: echo "${{steps.echo_glob.outputs.file-list}}"
+        run: echo "${{join(steps.echo_glob.outputs.file-list)}}"
