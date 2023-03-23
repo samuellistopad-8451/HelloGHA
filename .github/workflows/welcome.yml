@@ -15,7 +15,11 @@ jobs:
         id: echo_glob
         run: |
           shopt -s globstar
-          echo "file-list=$(ls ${PWD}/**/tes*.xml)\n" >> $GITHUB_OUTPUT
+          FILELIST=$(ls ${PWD}/**/tes*.xml)
+          FILELIST="${FILELIST//'%'/'%25'}"
+          FILELIST="${FILELIST//$'\n'/'%0A'}"
+          FILELIST="${FILELIST//$'\r'/'%0D'}"
+          echo "file-list=FILELIST\n" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
