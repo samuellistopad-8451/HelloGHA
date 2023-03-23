@@ -12,9 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Echo files
+        id: echo_glob
         run: |
           shopt -s globstar
-          echo "$(ls ${PWD}/**/tes*.xml)"
+          echo "file-list=$(ls ${PWD}/**/tes*.xml)\n" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
+      - name: List Files
+        run: echo "${{steps.echo_glob.outputs.file-list}}"
