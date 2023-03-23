@@ -10,10 +10,10 @@ jobs:
     name: Post welcome comment
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Echo files
-      
         run: |
-          echo "$(ls /**/*sh)"
+          echo "$(ls ${PWD})"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
