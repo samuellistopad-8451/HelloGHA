@@ -15,7 +15,7 @@ jobs:
         id: echo_glob
         run: |
           shopt -s globstar
-          FILELIST=$(ls ${PWD}/**/tes*.xml)
+          FILELIST=$(ls **/tes*.xml)
           echo "file-list<<EOF" >> $GITHUB_OUTPUT
           echo "$FILELIST" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
