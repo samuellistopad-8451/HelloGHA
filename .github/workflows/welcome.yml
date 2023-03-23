@@ -16,7 +16,7 @@ jobs:
         run: |
           shopt -s globstar
           FILELIST=$(ls ${PWD}/**/tes*.xml)
-          echo "file-list=$FILELIST" >> $GITHUB_OUTPUT
+          echo "::set-output name=file-list::$FILELIST"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
