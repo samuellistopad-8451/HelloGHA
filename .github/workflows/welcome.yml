@@ -23,3 +23,9 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
       - name: List Files
         run: echo "${{join(fromJSON(steps.echo_glob.outputs.file-list))}}"
+      
+      - name: Upload Project Structure w/ Resolved Staging Resources as an Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: 'test'
+
